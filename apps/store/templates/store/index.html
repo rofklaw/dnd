@@ -5,6 +5,19 @@
     <title></title>
   </head>
   <body>
+    <h1> IT THE STORE </h1>
+
+    {% if privilege == 1 %}
+      <a href="{% url 'store:curate' %}"> Click me to add Merch! </a>
+    {% endif %}
+
+    {% for item in merch %}
+      <p> {{item.name}} </p>
+      <p> $ {{item.price}} </p>
+      <img src="{{item.picture.name}}">
+      <p> {{item.description}} </p>
+    {% endfor %}
+
 
   </body>
 </html>
