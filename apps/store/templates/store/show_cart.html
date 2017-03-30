@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      {% for product in cart %}
+     <p> {{product.name}} </p>
+     <p> {{product.price}} </p>
+     <a href="{% url 'store:remove_from_cart' id=product.id %}", method="POST">Remove from Cart</a>
+     {% endfor %}
+
+     <h4> TOTAL </h4>
+
+    <p> {{ total }} </p>
+
+    <form action="{% url 'store:pay' %}" method="POST">
+      {% csrf_token %}
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_VJxvKaGiL6KL1DE2X0YbYlJt"
+    data-amount={{stripe_total}}
+    data-name="Demo Site"
+    data-description="Widget"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true"
+    >
+
+  </script>
+
+  <a href="{% url 'store:index' %}"> Back to the Store </a>
+</form>
+
+
+  </body>
+</html>

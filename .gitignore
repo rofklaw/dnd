@@ -1,4 +1,9 @@
-*.pyc
+.pyc
 .DS_Store
 db.sqlite3
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c815dd9df220a416e746797e52da6c9362009afc

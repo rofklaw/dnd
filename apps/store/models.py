@@ -4,12 +4,14 @@ from django.db import models
 from ..logreg.models import User, Admin
 
 class CartManager(models.Manager):
-    def Total(self, user):
-        my_cart = self.get(user__id = user)
+    def total(self, user):
+        my_cart = Product.objects.filter(cart__id = user)
         total = 0.00
         for product in my_cart:
-            total += product.products.price
+            total = total + float(product.price)
+
         return total
+
 
 class Product(models.Model):
     name = models.CharField(max_length = 255)
@@ -21,9 +23,11 @@ class Product(models.Model):
     admin = models.ForeignKey(Admin, related_name = "product")
 
 class Cart(models.Model):
-    products = models.ManyToManyField(Product, related_name = "cart")
-    user = models.ForeignKey(User, related_name = "cart")
+    products = models.ManyToManyField(Product, related_name = 'cart')
+    user = models.OneToOneField(User)
     objects = CartManager()
+
+
 
 
 
