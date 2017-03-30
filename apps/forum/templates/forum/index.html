@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
+
   <head>
     <meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
-    <p> temporary catcher to send the store dev to the store </p>
-    <a href="{% url 'store:index' %}"> to the store </a>
 
-  </body>
-=======
+
 	<head>
 		<meta charset="utf-8">
 		<title>Forum</title>
 		{% load staticfiles %}
 		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
+    <style media="screen">
+        #wrapper{
+            margin: 0px;
+            padding: 0px;
+            width: 3235px;
+            height: 2095px;
+            background-image: url("../../static/images/forum/tiamat.jpg");
+            background-size: contain;
+            background-color: black;
+            background-repeat: no-repeat;
+        }
+    </style>
 	</head>
 	<body>
 		<div class = "header">
 			<a href = "{% url 'store:index' %}">Store</a>
 			<a href = "{% url 'compendium:index' %}">Compendium</a>
-			<a href = "{% url 'characters:index' %}">Characters</a>
+			<a href = "{% url 'characters:profile' %}">Characters</a>
 		</div>
+    <div id ="wrapper">
 		{% for post in posts %}
 			<div class = "elements">
 				<p>{{post.poster.first_name}} {{post.poster.last_name}} Posted On {{post.created_at}} : </p>
@@ -47,6 +55,6 @@
 			<p>Pages:</p>
 			{{pages|safe}}
 		</div>
+  </div>
 	</body>
->>>>>>> 65e141a56c5ba4ab1d98dbe0278631c9f009df87
 </html>

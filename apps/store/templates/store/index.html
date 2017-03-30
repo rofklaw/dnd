@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1> IT THE STORE </h1>
+<head>
+{% load static %}
+<style media="screen">
+    #wrapper{
+        margin: 0px;
+        padding: 0px;
+        width: 1300px;
+        height: 700px;
+        background-image: url("../../static/images/store/Mji0eJV.jpg");
+        background-size: contain;
+        background-color: black;
+        background-repeat: no-repeat;
+        color: white;
+    }
+
+    #wrapper a{
+      color: cyan;
+      display: block;
+    }
+    #header{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    #header a{
+        text-align: right;
+    }
+    #Profile{
+        margin-left: 15px;
+    }
+    #characters{
+        display: block;
+        width: 1200px;
+        height: 400px;
+        margin: 30px;
+    }
+    #attributes{
+        margin: 10px;
+    }
+    .stats{
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 1px solid white;
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+</head>
+<body style="margin:0;">
+  <div id="wrapper">
+    <h1 id="header"> STORE </h1>
 
     {% if privilege == 1 %}
       <a href="{% url 'store:curate' %}"> Click me to add Merch! </a>
@@ -18,6 +61,11 @@
       <p> {{item.description}} </p>
       <a href ="{% url 'store:add_to_cart' id=item.id %}">Add to Cart </a>
     {% endfor %}
+
+    <a href="{% url 'forum:index' %}"> back to the forums </a>
+  </div>
+
+
 
 
   </body>
