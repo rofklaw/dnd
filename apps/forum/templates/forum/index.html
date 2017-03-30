@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Forum</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
   </head>
-  <body>
-    <p> temporary catcher to send the store dev to the store </p>
-    <a href="{% url 'store:index' %}"> to the store </a>
-
-  </body>
-=======
-	<head>
-		<meta charset="utf-8">
-		<title>Forum</title>
-		{% load staticfiles %}
-		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
-	</head>
+  <div id="wrapper">
 	<body>
 		<div class = "header">
 			<a href = "{% url 'store:index' %}">Store</a>
 			<a href = "{% url 'compendium:index' %}">Compendium</a>
-			<a href = "{% url 'characters:index' %}">Characters</a>
+			<a href = "{% url 'characters:profile' %}">Profile</a>
 		</div>
 		{% for post in posts %}
 			<div class = "elements">
@@ -47,6 +37,6 @@
 			<p>Pages:</p>
 			{{pages|safe}}
 		</div>
+      </div>
 	</body>
->>>>>>> 65e141a56c5ba4ab1d98dbe0278631c9f009df87
 </html>

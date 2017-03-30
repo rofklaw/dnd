@@ -2,8 +2,14 @@
 	margin: 0px;
 	padding: 0px;
 }
-body{
-	background-color: grey;
+#wrapper{
+	width: 1300px;
+	height: 700px;
+	background-image: url("images/characters/Tiamat.jpg");
+	background-size: contain;
+	background-color: black;
+	background-repeat: no-repeat;
+	color: white;
 }
 .elements{
 	display: inline-block;

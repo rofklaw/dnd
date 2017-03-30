@@ -11,7 +11,6 @@ stripe.api_key = "sk_test_kqjvn71sExbxXooSaRrcSYrg"
 
 
 def index(request):
-<<<<<<< HEAD
     pass
     # products = Product.objects.all()
     # for product in products:
@@ -32,7 +31,7 @@ def index(request):
     # print request.session['id']
     #
     # return render(request, 'store/index.html', data)
-=======
+
     cart_id = request.session['id']
     products = Product.objects.all()
     for product in products:
@@ -54,8 +53,6 @@ def index(request):
     print request.session['id']
 
     return render(request, 'store/index.html', data)
->>>>>>> c815dd9df220a416e746797e52da6c9362009afc
-
 def curate(request):
     pass
     # form = ProductForm()
@@ -65,7 +62,6 @@ def curate(request):
     # return render(request, 'store/curate.html', context)
 
 def create_merch(request):
-<<<<<<< HEAD
     pass
     # try:
     #     admincheck = Admin.objects.get(users__id = request.session['id'])
@@ -73,7 +69,6 @@ def create_merch(request):
     #     return redirect(reverse('store:index'))
     # Product.objects.create(name = request.POST['name'], description = request.POST['description'], picture = request.FILES['picture'], price = request.POST['price'], admin = admincheck)
     # return redirect(reverse('store:index'))
-=======
     try:
         admincheck = Admin.objects.get(users__id = request.session['id'])
     except:
@@ -132,4 +127,3 @@ def pay(request):
     )
     Cart.objects.filter(user_id = request.session['id']).delete()
     return redirect(reverse('store:index'))
->>>>>>> c815dd9df220a416e746797e52da6c9362009afc
