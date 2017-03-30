@@ -2,11 +2,14 @@
 	margin: 0px;
 	padding: 0px;
 }
-body{
-	background-color: grey;
+
+body {
+	background-color: gray;
 }
+
 .elements{
-	display: inline-block;
+	display: block;
+	width: 1000px;
 	color: white;
 	background-color: saddlebrown;
 	font-family: "Comic Sans MS";
@@ -15,6 +18,11 @@ body{
 	border: 2px solid black;
 	border-radius: 5px;
 }
+
+.elements > a{
+	color: yellow;
+}
+
 .post{
 	display: inline-block;
 	color: white;
@@ -25,6 +33,7 @@ body{
 	border: 2px solid black;
 	border-radius: 5px;
 }
+
 .pages{
 	padding: 5px;
 	margin-top: 5px;
@@ -34,4 +43,15 @@ body{
 	border: 2px solid black;
 	border-radius: 5px;
 	display: inline-block;
+}
+
+#wrapper{
+	margin: 0px;
+	padding: 0px;
+	width: 3235px;
+	height: 2095px;
+	background-image: url("../../static/images/forum/tiamat.jpg");
+	background-size: contain;
+	background-color: black;
+	background-repeat: no-repeat;
 }
