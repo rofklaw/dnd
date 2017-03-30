@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-# from django.core.extensions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from ..logreg.models import User, Admin
 from .forms import ProductForm
@@ -11,28 +11,6 @@ stripe.api_key = "sk_test_kqjvn71sExbxXooSaRrcSYrg"
 
 
 def index(request):
-<<<<<<< HEAD
-    pass
-    # products = Product.objects.all()
-    # for product in products:
-    #     print product.name
-    #     print product.picture
-    # data = {
-    # 'privilege': 0,
-    # 'merch': products
-    # }
-    # try:
-    #     # user = User.objects.get(id = request.session['id'])
-    #     admincheck = Admin.objects.get(users__id = request.session['id'])
-    #     data['privilege'] = admincheck.privilege_level
-    #     print "tried"
-    # except:
-    #     pass
-    # print data['privilege']
-    # print request.session['id']
-    #
-    # return render(request, 'store/index.html', data)
-=======
     cart_id = request.session['id']
     products = Product.objects.all()
     for product in products:
@@ -44,7 +22,7 @@ def index(request):
     'id': cart_id
     }
     try:
-        # user = User.objects.get(id = request.session['id'])
+        user = User.objects.get(id = request.session['id'])
         admincheck = Admin.objects.get(users__id = request.session['id'])
         data['privilege'] = admincheck.privilege_level
         print "tried"
@@ -54,26 +32,15 @@ def index(request):
     print request.session['id']
 
     return render(request, 'store/index.html', data)
->>>>>>> c815dd9df220a416e746797e52da6c9362009afc
 
 def curate(request):
-    pass
-    # form = ProductForm()
-    # context = {
-    # 'newproduct': form
-    # }
-    # return render(request, 'store/curate.html', context)
+    form = ProductForm()
+    context = {
+    'newproduct': form
+    }
+    return render(request, 'store/curate.html', context)
 
 def create_merch(request):
-<<<<<<< HEAD
-    pass
-    # try:
-    #     admincheck = Admin.objects.get(users__id = request.session['id'])
-    # except:
-    #     return redirect(reverse('store:index'))
-    # Product.objects.create(name = request.POST['name'], description = request.POST['description'], picture = request.FILES['picture'], price = request.POST['price'], admin = admincheck)
-    # return redirect(reverse('store:index'))
-=======
     try:
         admincheck = Admin.objects.get(users__id = request.session['id'])
     except:
@@ -104,7 +71,7 @@ def remove_from_cart(request, id):
 
 def show_cart(request):
     cart = Product.objects.filter(cart__id = request.session['cart_id'])
-    # print Cart.products.filter(user__id = request.session['id'])
+    print Cart.products.filter(user__id = request.session['id'])
     total = Cart.objects.total(request.session['cart_id'])
     stripe_total = total * 100
     counter = 0
@@ -132,4 +99,3 @@ def pay(request):
     )
     Cart.objects.filter(user_id = request.session['id']).delete()
     return redirect(reverse('store:index'))
->>>>>>> c815dd9df220a416e746797e52da6c9362009afc

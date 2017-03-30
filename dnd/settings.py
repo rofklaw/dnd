@@ -126,6 +126,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_ROOT = 'users/robertjewett/desktop/dojoassignments/python/django/dnd/static'
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_ROOT = 'users/robertjewett/desktop/dojoassignments/python/django/dnd/products/products/'
 MEDIA_URL = 'products/'
