@@ -21,7 +21,7 @@ def register(request):
         Admin.objects.create(users = namer, privilege_level = 1)
     request.session['id'] = namer.id
     request.session['first_name'] = namer.first_name
-    return redirect(reverse('characters:profile'))
+    return redirect(reverse('forum:index'))
 
 def login(request):
     user = User.objects.logvalidator(request.POST['email'], request.POST['password'])
@@ -32,4 +32,4 @@ def login(request):
     namer = User.objects.get(email = request.POST['email'])
     request.session['id'] = namer.id
     request.session['first_name'] = namer.first_name
-    return redirect(reverse('characters:profile'))
+    return redirect(reverse('forum:index'))
