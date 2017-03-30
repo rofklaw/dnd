@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    {% load static %}
+    <style media="screen">
+        #wrapper{
+            margin: 0px;
+            padding: 0px;
+            width: 1300px;
+            height: 700px;
+            background-image: url("../../static/images/characters/squad.jpg");
+            background-size: contain;
+            background-color: black;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        #header{
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        #header a{
+            text-align: right;
+        }
+        #Profile{
+            margin-left: 15px;
+        }
+        #characters{
+            display: block;
+            width: 1200px;
+            height: 400px;
+            margin: 30px;
+        }
+        #attributes{
+            margin: 10px;
+        }
+        .stats{
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid white;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+  </head>
+  <body style="margin:0;">
+    <div id="wrapper">
+    <div id="header">
+        <h2 id="logo">Dojo & Dragons</h2>
+        <a href="#">Home</a>
+        <a href="#">Logout</a>
+    </div>
+    <div id="Profile">
+        <h3>Profile:</h3>
+        <div id="Profile_image">
+        </div>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Date Registered:</td>
+                <td>{{user.creted_at}}</td>
+            </tr>
+        </table>
+    </div>
+    <div id="characters">
+        <h3>Characters:</h3>
+
+            {% for attribute in Attributes %}
+            <div class="stats">
+            <table style="dispaly:inline-block;">
+                <tr>
+                    <td>Character:</td>
+                    <td>{{attribute.character.name}}</td>
+                </tr>
+                <tr>
+                    <td>Level:</td>
+                    <td>{{attribute.character.level}}</td>
+                </tr>
+                <tr>
+                    <td>Experience:</td>
+                    <td>{{attribute.character.experience}}</td>
+                </tr>
+                <tr>
+                    <td>Class:</td>
+                    <td>{{attribute.character.my_class}}</td>
+                </tr>
+                <tr>
+                    <td>Race:</td>
+                    <td>{{attribute.character.race}}</td>
+                </tr>
+                <tr>
+                    <td>Background:</td>
+                    <td>{{attribute.character.background}}</td>
+                </tr>
+                <tr>
+                    <td>Alignment:</td>
+                    <td>{{attribute.character.alignment}}</td>
+                </tr>
+                <tr>
+                    <td>STR: {{attribute.strength}}</td>
+                    <td> Str. Modifier: {{attribute.strModifier}} </td>
+                </tr>
+                <tr>
+                    <td>DEX: {{attribute.dexterity}}</td>
+                    <td>Dex. Modifier: {{attribute.dexModifier}} </td>
+                </tr>
+                <tr>
+                    <td>CON: {{attribute.constitution}}</td>
+                    <td> Con. Modifier: {{attribute.conModifier}} </td>
+                </tr>
+                <tr>
+                    <td>INT: {{attribute.intelligence}}</td>
+                    <td> Int. Modifier: {{attribute.intModifier}} </td>
+                </tr>
+                <tr>
+                    <td>WIS: {{attribute.wisdom}}</td>
+                    <td> Wis. Modifier: {{attribute.wisModifier}} </td>
+                </tr>
+                <tr>
+                    <td>CHA: {{attribute.charisma}}</td>
+                    <td> Cha. Modifier: {{attribute.chaModifier}} </td>
+                </tr>
+            </table>
+            </div>
+        {% endfor %}
+        <form class="" action="{% url 'characters:charCreate' %}" method="post">
+            {% csrf_token %}
+            <button name="create">Add Character</button>
+        </form>
+    </div>
+  </body>
+</html>
