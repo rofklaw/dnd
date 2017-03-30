@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^forum', include('apps.forum.urls', namespace = "forum")),
-    url(r'^characters', include('apps.characters.urls', namespace = "characters")),
-    url(r'^store', include('apps.store.urls', namespace = "store")),
-    url(r'^compendium', include('apps.compendium.urls', namespace = "compendium")),
+    url(r'^forum/', include('apps.forum.urls', namespace = "forum")),
+    url(r'^characters/', include('apps.characters.urls', namespace = "characters")),
+    url(r'^store/', include('apps.store.urls', namespace = "store")),
+    url(r'^compendium/', include('apps.compendium.urls', namespace = "compendium")),
     url((r'^'), include('apps.logreg.urls', namespace = "login"))
 ]
