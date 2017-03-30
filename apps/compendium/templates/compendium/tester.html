@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>tester</title>
+        <style media="screen">
+            #wrapper{
+                margin: 0px;
+                padding: 0px;
+                width: 1300px;
+                height:auto;
+                background-image: url("../../static/images/compendium/Dungeons-and-dragons-online-drows.jpg");
+                background-size: contain;
+                background-color: black;
+                background-repeat: no-repeat;
+                color: white;
+            }
+            #header{
+                background-color:rgba(0, 0, 0, 0.5);
+            }
+            #searcher{
+                display:inline-block;
+                width:200px;
+                height:700px;
+            }
+            .search{
+                display:block;
+            }
+            #information{
+                display: inline-block;
+                width: 900px;
+                height: auto;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript'>
+            $(document).ready(function(){
+                $('form').submit(function(e) {
+                    e.preventDefault();
+                    var my_class = $('#charClass').val();
+                    console.log(my_class);
+                    var my_level = $('#charSpell').val();
+                    console.log(my_level);
+                    $.get("http://www.dnd5eapi.co/api/"+my_class, function(res) {
+                        console.log(res);
+                        var html_str = "";
+                        html_str += "<h3>"+ res.name + "</h3>";
+                        html_str += "<h4>Hit Die: "+ res.hit_die +"</h4>";
+                        html_str += "<b>Armor & Weapon Proficiencies:</b><ul>";
+                            for(var i = 0; i < res.proficiencies.length; i++) {
+                                html_str += "<li>" + res.proficiencies[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Proficiency Choices:</b><ul>";
+                            for(var i = 0; i < res.proficiency_choices[0].from.length; i++) {
+                                html_str += "<li>" + res.proficiency_choices[0].from[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Saving Throws:</b><ul>";
+                            for(var i = 0; i < res.saving_throws.length; i++) {
+                                html_str += "<li>" + res.saving_throws[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Spells:</b><ul>";
+                        for(var num = 1; num<306; num++){
+                            $.get("http://www.dnd5eapi.co/api/spells/"+num, function(res){
+                                if(res.level == my_level){
+                                    for(var i = 0; i < res.classes.length; i++){
+                                        if(res.classes[i].name == "Wizard"){
+                                            html_str += "<h4>"+res.name+"</h4>";
+                                            html_str += "<p>Description: "+res.desc+"</p>";
+                                            html_str += "<p>Level: "+res.level+"</p>";
+                                            html_str += "<p>Range: "+res.range+"</p>";
+                                            html_str += "<p>Duration: "+res.duration+"</p>";
+                                            html_str += "<p>Casting Time: "+res.casting_time+"</p>";
+                                            html_str += "<p>Concentration: "+res.concentration+"</p>";
+                                        }
+                                    }
+                                }
+                                if(num == 306){
+                                    $("#information").html(html_str);
+                                    }
+                            });
+                        }
+                    }, "json");
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <h2>Dojo & Dragons</h2>
+                <a href="#">Home</a>
+                <a href="#">Logout</a>
+            </div>
+            <div id="searcher">
+                <h4>Spell Search:</h4>
+                <div class="search">
+                    <form>
+                        Class: <select id="charClass" name="charClass">
+                            <option value="classes/2">Bard</option>
+                            <option value="classes/3">Cleric</option>
+                            <option value="classes/4">Druid</option>
+                            <option value="classes/7">Paladin</option>
+                            <option value="classes/8">Ranger</option>
+                            <option value="classes/10">Sorcerer</option>
+                            <option value="classes/11">Warlock</option>
+                            <option value="classes/12">Wizard</option>
+                        </select>
+                        Spell Level: <select id="charSpell" name="charSpells">
+                            <option value=0>Cantrips</option>
+                            <option value=1>Lvl.1</option>
+                            <option value=2>Lvl.2</option>
+                            <option value=3>Lvl.3</option>
+                            <option value=4>Lvl.4</option>
+                            <option value=5>Lvl.5</option>
+                            <option value=6>Lvl.6</option>
+                            <option value=7>Lvl.7</option>
+                            <option value=8>Lvl.8</option>
+                            <option value=9>Lvl.9</option>
+                        </select>
+                        <input id="submit" type='submit' value='Search'>
+                    </form>
+                </div>
+                <h4>Class Search:</h4>
+                <div class="search">
+                    <form>
+                        <label for="">Class:</label>
+                        <select id="charClass" name="charClass">
+                            <option value="classes/1">Barbarian</option>
+                            <option value="classes/2">Bard</option>
+                            <option value="classes/3">Cleric</option>
+                            <option value="classes/4">Druid</option>
+                            <option value="classes/5">Fighter</option>
+                            <option value="classes/6">Monk</option>
+                            <option value="classes/7">Paladin</option>
+                            <option value="classes/8">Ranger</option>
+                            <option value="classes/9">Rouge</option>
+                            <option value="classes/10">Sorcerer</option>
+                            <option value="classes/11">Warlock</option>
+                            <option value="classes/12">Wizard</option>
+                        </select>
+                        <input id="submit" type='submit' value='Search'>
+                    </form>
+                </div>
+                <h4>Monster Search:</h4>
+                <div class="search">
+                    <form>
+                        <label for="">Monster:</label>
+                        <input type="text" name="monster" placeholder="Name of Monster">
+                        <input id="submit" type='submit' value='Search'>
+                        <p>or</p>
+                        <input id="submit" type='submit' value='Random Monster'>
+                    </form>
+                </div>
+            </div>
+            <div id="information">
+            </div>
+        </div>
+    </body>
+</html>
