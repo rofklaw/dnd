@@ -48,10 +48,10 @@ body {
 #wrapper{
 	margin: 0px;
 	padding: 0px;
-	width: 3235px;
-	height: 2095px;
-	background-image: url("../../static/images/forum/tiamat.jpg");
+	width: 1280px;
+	height: 720px;
+	background-image: url("/static/images/forum/tiamat.jpg");
 	background-size: contain;
-	background-color: black;
+	/*background-color: black;*/
 	background-repeat: no-repeat;
 }
