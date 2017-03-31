@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.db.models import Count
 from .models import Post, Comment
-from ..logreg.models import User
+from ..logreg.models import User, Admin
 
 # Create your views here.
 def index(request):
@@ -37,8 +37,16 @@ def index(request):
 	context = {
 		"posts": posts,
 		"message": message,
-		"pages": pages
+		"pages": pages,
+		"privilege": 0
 	}
+	try:
+		user = User.objects.get(id = request.session['id'])
+		admincheck = Admin.objects.get(users__id = request.session['id'])
+		context['privilege'] = admincheck.privilege_level
+		print "tried"
+	except:
+		pass
 	return render(request, 'forum/index.html', context)
     
 def add(request):
@@ -102,7 +110,8 @@ def post(request, id):
 			"header": post,
 			"post": post,
 			"comments": comments,
-			"message": message
+			"message": message,
+			"privilege": 0
 		}
 	else:
 		value = request.session['comment'] * 10
@@ -122,6 +131,7 @@ def post(request, id):
 			"post": post,
 			"comments": comments,
 			"message": message,
+			"privilege": 0
 		}
 	request.session['comment'] = int(request.session['comment'])
 	all = Comment.objects.filter(post = post)
@@ -132,6 +142,13 @@ def post(request, id):
 			if not i == request.session['comment']:
 				pages += "<a href = '{}'>{}</a> ".format(reverse("forum:commentpage", kwargs={'id': id, "page": i}), i)
 	context["pages"] = pages
+	try:
+		user = User.objects.get(id = request.session['id'])
+		admincheck = Admin.objects.get(users__id = request.session['id'])
+		context['privilege'] = admincheck.privilege_level
+		print "tried"
+	except:
+		pass
 	return render(request, 'forum/post.html', context)
 
 def comment(request, id):
@@ -154,3 +171,8 @@ def delcom(request, id, comment):
 	Comment.objects.get(id = comment).delete();
 	request.session['comment'] = 1
 	return redirect(reverse('forum:post', kwargs={'id': id}))
+
+def logout(request):
+	del request.session['first_name']
+	del request.session['id']
+	return redirect(reverse('login:home'))

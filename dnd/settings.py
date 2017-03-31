@@ -128,4 +128,4 @@ USE_TZ = True
 STATIC_ROOT = 'users/robertjewett/desktop/dojoassignments/python/django/dnd/static'
 STATIC_URL = '/static/'
 MEDIA_ROOT = 'users/robertjewett/desktop/dojoassignments/python/django/dnd/products/products/'
-MEDIA_URL = 'products/'
+MEDIA_URL = '/products/'

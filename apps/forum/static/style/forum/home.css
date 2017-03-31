@@ -2,6 +2,7 @@
 	margin: 0px;
 	padding: 0px;
 }
+<<<<<<< HEAD
 #wrapper{
 	width: 1300px;
 	height: 700px;
@@ -10,9 +11,16 @@
 	background-color: black;
 	background-repeat: no-repeat;
 	color: white;
+=======
+
+body {
+	background-color: gray;
+>>>>>>> 750e508706ff24652942588bca32b171c5787094
 }
+
 .elements{
-	display: inline-block;
+	display: block;
+	width: 1000px;
 	color: white;
 	background-color: saddlebrown;
 	font-family: "Comic Sans MS";
@@ -21,6 +29,11 @@
 	border: 2px solid black;
 	border-radius: 5px;
 }
+
+.elements > a{
+	color: yellow;
+}
+
 .post{
 	display: inline-block;
 	color: white;
@@ -31,6 +44,7 @@
 	border: 2px solid black;
 	border-radius: 5px;
 }
+
 .pages{
 	padding: 5px;
 	margin-top: 5px;
@@ -41,3 +55,17 @@
 	border-radius: 5px;
 	display: inline-block;
 }
+<<<<<<< HEAD
+=======
+
+#wrapper{
+	margin: 0px;
+	padding: 0px;
+	width: 3235px;
+	height: 2095px;
+	background-image: url("../../static/images/forum/tiamat.jpg");
+	background-size: contain;
+	background-color: black;
+	background-repeat: no-repeat;
+}
+>>>>>>> 750e508706ff24652942588bca32b171c5787094
