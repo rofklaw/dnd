@@ -14,22 +14,31 @@
         <style media="screen">
 
             body{
-                margin: 0px;
-                padding: 0px;
-                width: 1300px;
-                height: 1500px;
-                background: linear-gradient(transparent, #111, #111), url("../../static/images/characters/lqFniyN.jpg");
-                background-size: contain;
-                background-color: black;
-                background-repeat: no-repeat;
-                color: white;
-            }
-            a{
-                color:white;
+                background: url("../../static/images/characters/lqFniyN.jpg");
+                -webkit-background-size: cover;
+            	-moz-background-size: cover;
+            	-o-background-size: cover;
+            	background-size: cover;
+            	background-color: black;
+            	color: white;
             }
             #header{
-                height: 85px;
-                background-color:rgba(0, 0, 0, 0.5);
+            	background:linear-gradient(#555, #000, #555);
+            	border-bottom: 1px solid black;
+            }
+            #header h1{
+            	margin: 0px;
+            	margin-left: 15px;
+            	font-style: italic;
+            	color: rgba(255, 100, 100, 0.75);
+            }
+            #links{
+            	text-align: right;
+            }
+            a{
+            	color: white;
+            	padding-left: 5px;
+                padding-right: 5px;
             }
             #f1{
                 display: inline-block;;
@@ -43,14 +52,6 @@
             #form label{
                 display:block;
                 font-weight: bold;
-            }
-            #head{
-                text-align: right;
-                padding-right: 45px;
-            }
-            #heada{
-                text-shadow: 1px 1px 1px #977;
-                color:red;
             }
             .block{
                 background-color: rgba(0, 0, 0, 0.5);
@@ -70,10 +71,8 @@
     <body style="margin: 0px;">
         <div id="wrapper">
             <div id="header">
-                <div id="heada">
-                    <h1>Dojo & Dragons</h1>
-                </div>
-                <div id="head">
+                <h1>Dojo & Dragons</h1>
+                <div id="links">
                     <a href="{% url 'forum:index' %}">Home</a>
                     <a href = "{% url 'forum:logout' %}">Logout</a>
                 </div>

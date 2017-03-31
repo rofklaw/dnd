@@ -7,16 +7,18 @@
 		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
-        <div id="header">
-            <h2 id="logo">Dojo & Dragons</h2>
-            <a href="{% url 'forum:index' %}">Home</a>
-            <a href="{% url 'login:home' %}">Logout</a>
+		<div id="header">
+            <h1>Dojo & Dragons</h1>
+            <div id="links">
+                <a href="{% url 'forum:index' %}">Home</a>
+				<a href = "{% url 'store:index' %}">Store</a>
+				<a href = "{% url 'compendium:index' %}">Compendium</a>
+				<a href = "{% url 'characters:profile' %}">Profile/Characters</a>
+                <a href = "{% url 'forum:logout' %}">Logout</a>
+            </div>
         </div>
 		<div class = "menu">
-			<a href = "{% url 'store:index' %}">Store</a>
-			<a href = "{% url 'compendium:index' %}">Compendium</a>
-			<a href = "{% url 'characters:profile' %}">Profile/Characters</a>
-			<a href = "{% url 'forum:logout' %}">Logout</a>
+
 		</div>
 			{% for post in posts %}
 				<div class = "elements">

@@ -3,30 +3,31 @@
 <head>
 {% load staticfiles %}
 <style media="screen">
-    body {
-      background-color: black;
-    }
-
-    #wrapper{
-        margin: 0px;
-        padding: 0px;
-        width: 1300px;
-        height: 700px;
+    body{
         background-image: url("../../static/images/store/Mji0eJV.jpg");
-        background-size: contain;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         background-color: black;
-        background-repeat: no-repeat;
         color: white;
     }
-
-    #wrapper a{
-      color: cyan;
-      display: block;
+    a{
+        color: white;
+        padding-left: 5px;
+        padding-right: 5px;
     }
     #header{
-        background-color: rgba(0, 0, 0, 0.5);
+        background:linear-gradient(#555, #000, #555);
+        border-bottom: 1px solid black;
     }
-    #header a{
+    #header h1{
+        margin: 0px;
+        margin-left: 15px;
+        font-style: italic;
+        color: rgba(255, 100, 100, 0.75);
+    }
+    #links{
         text-align: right;
     }
     #Profile{
@@ -41,7 +42,6 @@
     #attributes{
         margin: 10px;
     }
-
     .treasure{
       display: inline-block;
       margin: 10px;
@@ -51,13 +51,9 @@
       border-style: solid;
       box-shadow: 5px 5px 3px #001;
     }
-
-    .trasure img{
+    .treasure img{
       width: 200;
       height: auto;
-    }
-
-
     }
     .stats{
         display: inline-block;
@@ -69,15 +65,18 @@
 </style>
 </head>
 <body style="margin:0;">
-  <div id="wrapper">
-    <h1 id="header"> STORE </h1>
-
+    <div id="header">
+        <h1>Dojo & Dragons</h1>
+        <div id="links">
+            <a href="{% url 'forum:index' %}">Home</a>
+            <a href = "{% url 'forum:logout' %}">Logout</a>
+        </div>
+    </div>
     {% if privilege == 1 %}
-      <a href="{% url 'store:curate' %}"> Click me to add Merch! </a>
+    <div id="Merch">
+        <a href="{% url 'store:curate' %}"> Click to add Merch! </a>
+    </div>
     {% endif %}
-
-
-
     {% for item in merch %}
       <div class="treasure"
         <p> {{item.name}} </p>
@@ -87,14 +86,5 @@
         <a href ="{% url 'store:add_to_cart' id=item.id %}">Add to Cart </a>
       </div>
     {% endfor %}
-
-
-
-    <a href="{% url 'forum:index' %}"> back to the forums </a>
-  </div>
-
-
-
-
   </body>
 </html>

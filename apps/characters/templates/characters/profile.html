@@ -6,23 +6,31 @@
     {% load static %}
     <style media="screen">
         body{
-            margin: 0px;
-            padding: 0px;
-            width: 1300px;
-            height: 700px;
             background-image: url("../../static/images/characters/squad.jpg");
-            background-size: contain;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
             background-color: black;
-            background-repeat: no-repeat;
             color: white;
         }
         a{
             color:white;
+            padding-left: 5px;
+            padding-right: 5px;
         }
         #header{
-            background-color: rgba(0, 0, 0, 0.5);
+
+            background:linear-gradient(#555, #000, #555);
+            border-bottom: 1px solid black;
         }
-        #header a{
+        #header h1{
+            margin: 0px;
+            margin-left: 15px;
+            font-style: italic;
+            color: rgba(255, 100, 100, 0.75);
+        }
+        #links{
             text-align: right;
         }
         #Profile{
@@ -47,11 +55,13 @@
     </style>
   </head>
   <body style="margin:0;">
-    <div id="header">
-        <h2 id="logo">Dojo & Dragons</h2>
-        <a href="{% url 'forum:index' %}">Home</a>
-        <a href="{% url 'login:home' %}">Logout</a>
-    </div>
+      <div id="header">
+          <h1>Dojo & Dragons</h1>
+          <div id="links">
+              <a href="{% url 'forum:index' %}">Home</a>
+              <a href = "{% url 'forum:logout' %}">Logout</a>
+          </div>
+      </div>
     <div id="Profile">
         <h3>Profile:</h3>
         <div id="Profile_image">
