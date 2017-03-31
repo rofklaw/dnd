@@ -4,14 +4,18 @@
 }
 
 body {
-	background-color: gray;
+	background-color: black;
+}
+
+a{
+	color: white;
 }
 
 .elements{
 	display: block;
 	width: 1000px;
 	color: white;
-	background-color: saddlebrown;
+	background-color: rgba(0, 0, 0, 0.5);
 	font-family: "Comic Sans MS";
 	margin: 5px;
 	padding: 5px;
@@ -26,7 +30,7 @@ body {
 .post{
 	display: inline-block;
 	color: white;
-	background-color: saddlebrown;
+	background-color: rgba(0, 0, 0, 0.5);
 	font-family: "Comic Sans MS";
 	margin: 5px;
 	padding: 5px;
@@ -37,7 +41,7 @@ body {
 .pages{
 	padding: 5px;
 	margin-top: 5px;
-	background-color: maroon;
+	background-color: rgba(50, 0, 0, 0.5);
 	font-family: "Comic Sans MS";
 	color: white;
 	border: 2px solid black;
