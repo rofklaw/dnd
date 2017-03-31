@@ -7,33 +7,37 @@
 		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
 	</head>
 	<body>
-		<div class = "elements">
-			<p>{{header.poster.first_name}} {{header.poster.last_name}} Posted On {{header.created_at}} : </p>
-			<p>{{header.text}}</p>
+		<div class = "header">
+			<a href = "{% url 'store:index' %}">Store</a>
+			<a href = "{% url 'compendium:index' %}">Compendium</a>
+			<a href = "{% url 'characters:profile' %}">Characters</a>
+			<a href = "{% url 'forum:logout' %}">Logout</a>
 		</div>
-		{% for comment in comments %}
+		<div id = "wrapper">
 			<div class = "elements">
-				<p>{{comment.poster.first_name}} {{comment.poster.last_name}} Posted On {{comment.created_at}} : </p>
-				<p>{{comment.text}}</p>
-				{% if comment.poster.id == request.session.id or privilege == 1%}
-					<a href = "{% url 'forum:delcom' post.id comment.id %}">Delete</a>
-				{% endif %}
+				<p>{{header.poster.first_name}} {{header.poster.last_name}} Posted On {{header.created_at}} : </p>
+				<p>{{header.text}}</p>
 			</div>
-		{% endfor %}
-		<div class = "post">
-			<form action = "{% url 'forum:comment' post.id %}" method = "post">
-				{% csrf_token %}
-				<p>Make a new comment:</p>
-				<textarea name = "text" id = "text"></textarea>
-				<input type = "submit" value = "Post">
-			</form>
-		</div>
-		{{message|safe}}
-		<div class = pages>
-			<p>Pages:</p>
+			{% for comment in comments %}
+				<div class = "elements">
+					<p>{{comment.poster.first_name}} {{comment.poster.last_name}} Posted On {{comment.created_at}} : </p>
+					<p>{{comment.text}}</p>
+					{% if comment.poster.id == request.session.id or privilege == 1%}
+						<a href = "{% url 'forum:delcom' post.id comment.id %}">Delete</a>
+					{% endif %}
+				</div>
+			{% endfor %}
+			<div class = "post">
+				<form action = "{% url 'forum:comment' post.id %}" method = "post">
+					{% csrf_token %}
+					<p>Make a new comment:</p>
+					<textarea name = "text" id = "text"></textarea>
+					<input type = "submit" value = "Post">
+				</form>
+			</div>
+			{{message|safe}}
 			{{pages|safe}}
+			<br><a href = "{% url 'forum:back' %}">Back</a>
 		</div>
-		<br><a href = "{% url 'forum:back' %}">Back</a>
-		<a href = "{% url 'forum:logout' %}">Logout</a>
 	</body>
 </html>

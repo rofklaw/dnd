@@ -2,23 +2,20 @@
 	margin: 0px;
 	padding: 0px;
 }
-#wrapper{
-	width: 1300px;
-	height: 700px;
-	background-image: url("../images/forum/tiamat.jpg");
-	background-size: contain;
-	background-color: black;
-	background-repeat: no-repeat;
-	color: white;
-}
 
 body {
+	background: url("../../images/tiamat.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 	background-color: black;
+	color: white;
 }
 
 a{
 	color: white;
-	background-color: gray;
+	/*background-color: gray;*/
 }
 
 .elements{
@@ -31,6 +28,7 @@ a{
 	padding: 5px;
 	border: 2px solid black;
 	border-radius: 5px;
+	vertical-align: top;
 }
 
 .elements > a{
@@ -57,15 +55,4 @@ a{
 	border: 2px solid black;
 	border-radius: 5px;
 	display: inline-block;
-}
-
-#wrapper{
-	margin: 0px;
-	padding: 0px;
-	width: 1280px;
-	height: 720px;
-	background-image: url("/static/images/forum/tiamat.jpg");
-	background-size: contain;
-	/*background-color: black;*/
-	background-repeat: no-repeat;
 }
