@@ -2,27 +2,31 @@
 	margin: 0px;
 	padding: 0px;
 }
-<<<<<<< HEAD
-#wrapper{
-	width: 1300px;
-	height: 700px;
-	background-image: url("images/characters/Tiamat.jpg");
-	background-size: contain;
-	background-color: black;
-	background-repeat: no-repeat;
-	color: white;
-=======
+
+a{
+	color:white;
+}
 
 body {
-	background-color: gray;
->>>>>>> 750e508706ff24652942588bca32b171c5787094
+	margin: 0px;
+	padding: 0px;
+	width: 1200px;
+	height: 1620px;
+	background: linear-gradient(transparent, #111, #111), url("../../images/forum/tiamat.jpg");
+	background-size: contain;
+	background-color: #111;
+	background-repeat: no-repeat;
+}
+#header{
+	background-color: rgba(0, 0, 0, 0.5);
+	color:white;
 }
 
 .elements{
 	display: block;
 	width: 1000px;
 	color: white;
-	background-color: saddlebrown;
+	background-color: rgba(0, 0, 0, 0.6);
 	font-family: "Comic Sans MS";
 	margin: 5px;
 	padding: 5px;
@@ -37,35 +41,18 @@ body {
 .post{
 	display: inline-block;
 	color: white;
-	background-color: saddlebrown;
+	background-color: rgba(0, 0, 0, 0.6);
 	font-family: "Comic Sans MS";
 	margin: 5px;
 	padding: 5px;
-	border: 2px solid black;
+	border: 2px solid silver;
 	border-radius: 5px;
 }
 
 .pages{
 	padding: 5px;
 	margin-top: 5px;
-	background-color: maroon;
 	font-family: "Comic Sans MS";
 	color: white;
-	border: 2px solid black;
-	border-radius: 5px;
 	display: inline-block;
 }
-<<<<<<< HEAD
-=======
-
-#wrapper{
-	margin: 0px;
-	padding: 0px;
-	width: 3235px;
-	height: 2095px;
-	background-image: url("../../static/images/forum/tiamat.jpg");
-	background-size: contain;
-	background-color: black;
-	background-repeat: no-repeat;
-}
->>>>>>> 750e508706ff24652942588bca32b171c5787094

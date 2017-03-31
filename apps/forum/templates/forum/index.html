@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <title>Forum</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
   </head>
-  <div id="wrapper">
-=======
-	<head>
-		<meta charset="utf-8">
-		<title>Forum</title>
-		{% load staticfiles %}
-		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
-	</head>
->>>>>>> 750e508706ff24652942588bca32b171c5787094
 	<body>
-		<div class = "header">
+        <div id="header">
+            <h2 id="logo">Dojo & Dragons</h2>
+            <a href="{% url 'forum:index' %}">Home</a>
+            <a href="{% url 'login:home' %}">Logout</a>
+        </div>
+		<div class = "menu">
 			<a href = "{% url 'store:index' %}">Store</a>
 			<a href = "{% url 'compendium:index' %}">Compendium</a>
-<<<<<<< HEAD
-			<a href = "{% url 'characters:profile' %}">Profile</a>
-=======
 			<a href = "{% url 'characters:profile' %}">Characters</a>
 			<a href = "{% url 'forum:logout' %}">Logout</a>
->>>>>>> 750e508706ff24652942588bca32b171c5787094
 		</div>
 		<div id ="wrapper">
 			{% for post in posts %}
@@ -46,16 +37,6 @@
 					<input type = "submit" value = "Post">
 				</form>
 			</div>
-<<<<<<< HEAD
-		{% endfor %}
-		<div class = "post">
-			<form action = "{% url 'forum:add' %}" method = "post">
-				{% csrf_token %}
-				<p>Make a new post:</p>
-				<textarea name = "text" id = "text"></textarea>
-				<input type = "submit" value = "Post">
-			</form>
-		</div>
 		<br>
 		{{message|safe}}
 		<div class = "pages">
@@ -63,14 +44,5 @@
 			{{pages|safe}}
 		</div>
       </div>
-=======
-			<br>
-			{{message|safe}}
-			<div class = "pages">
-				<p>Pages:</p>
-				{{pages|safe}}
-			</div>
-	  </div>
->>>>>>> 750e508706ff24652942588bca32b171c5787094
 	</body>
 </html>
