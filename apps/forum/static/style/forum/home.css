@@ -2,13 +2,28 @@
 	margin: 0px;
 	padding: 0px;
 }
+<<<<<<< HEAD
+#wrapper{
+	width: 1300px;
+	height: 700px;
+	background-image: url("images/characters/Tiamat.jpg");
+	background-size: contain;
+	background-color: black;
+	background-repeat: no-repeat;
+	color: white;
+=======
 
 body {
+<<<<<<< HEAD
 	background-color: black;
 }
 
 a{
 	color: white;
+=======
+	background-color: gray;
+>>>>>>> 750e508706ff24652942588bca32b171c5787094
+>>>>>>> 2d1445b6c073779b8bb9ca2e7cc8c33c1dfe3d3a
 }
 
 .elements{
@@ -48,3 +63,17 @@ a{
 	border-radius: 5px;
 	display: inline-block;
 }
+<<<<<<< HEAD
+=======
+
+#wrapper{
+	margin: 0px;
+	padding: 0px;
+	width: 1280px;
+	height: 720px;
+	background-image: url("/static/images/forum/tiamat.jpg");
+	background-size: contain;
+	/*background-color: black;*/
+	background-repeat: no-repeat;
+}
+>>>>>>> 750e508706ff24652942588bca32b171c5787094

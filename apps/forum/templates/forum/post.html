@@ -15,7 +15,7 @@
 			<div class = "elements">
 				<p>{{comment.poster.first_name}} {{comment.poster.last_name}} Posted On {{comment.created_at}} : </p>
 				<p>{{comment.text}}</p>
-				{% if comment.poster.id == request.session.id %}
+				{% if comment.poster.id == request.session.id or privilege == 1%}
 					<a href = "{% url 'forum:delcom' post.id comment.id %}">Delete</a>
 				{% endif %}
 			</div>
@@ -34,5 +34,6 @@
 			{{pages|safe}}
 		</div>
 		<br><a href = "{% url 'forum:back' %}">Back</a>
+		<a href = "{% url 'forum:logout' %}">Logout</a>
 	</body>
 </html>

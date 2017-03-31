@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^back', views.back, name = "back"),
     url(r'^(?P<id>\d+)/post/delete', views.delete, name = "delete"),
     url(r'^(?P<id>\d+)/comment/(?P<comment>\d+)/delete', views.delcom, name = "delcom"),
+    url(r'^logout', views.logout, name = "logout")
 ]

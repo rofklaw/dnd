@@ -14,11 +14,7 @@ def profile(request):
     "user": User.objects.get(id=request.session['id']),
     "Attributes":Attribute.objects.filter(character__user__id=request.session['id'])
     }
-    count = {
-    "zero": 0,
-    "one": 1
-    }
-    return render(request, 'characters/profile.html', context, count)
+    return render(request, 'characters/profile.html', context)
 
 def create(request):
     try:
