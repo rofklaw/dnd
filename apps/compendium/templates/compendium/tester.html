@@ -49,6 +49,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type='text/javascript'>
             $(document).ready(function(){
+                $("#information").hide();
+                $("#click").click(function(){
+                        $("#information").show();
+                })
                 $('#spells').submit(function(e) {
                     e.preventDefault();
                     var my_class = $('#charClass1').val();
@@ -146,7 +150,7 @@
             <div id="header">
                 <h2>Dojo & Dragons</h2>
                 <a href="{% url 'forum:index' %}">Home</a>
-                <a href="#">Logout</a>
+                <a href = "{% url 'forum:logout' %}">Logout</a>
             </div>
             <div id="searcher">
                 <h4>Spell Search:</h4>
@@ -174,7 +178,7 @@
                             <option value=8>Lvl.8</option>
                             <option value=9>Lvl.9</option>
                         </select>
-                        <input id="spells2" type='submit' value='Search Spell'>
+                        <input id="click" type='submit' value='Search Spell'>
                     </form>
                 </div>
                 <h4>Class Search:</h4>
@@ -195,7 +199,7 @@
                             <option value="classes/11">Warlock</option>
                             <option value="classes/12">Wizard</option>
                         </select>
-                        <input id="class2" type='submit' value='Search Class'>
+                        <input id="click" type='submit' value='Search Class'>
                     </form>
                 </div>
                 <h4>Monster Search:</h4>
@@ -203,7 +207,7 @@
                     <form id="monster">
                         <label for="">Monster:</label>
                         <input id="monsterID" type="text" name="monster" placeholder="ID of Monster">
-                        <input id="monster2" type='submit' value='Search'>
+                        <input id="click" type='submit' value='Search'>
                     </form>
                 </div>
             </div>

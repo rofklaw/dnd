@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/logreg/login.css' %}"media="screen" title="no title"  charset="utf-8">
+    <title>Login/Registration</title>
   </head>
+
   <body>
     {% if messages %}
       <ul class="messages">
@@ -12,22 +15,29 @@
       {% endfor %}
       </ul>
     {% endif %}
+    <div id="main">
     <form action="register" method="POST">
       {% csrf_token %}
-      First Name <input type="text" name="fname"></input>
-      Last Name <input type="text" name="lname"></input>
-      Email <input type="text" name="email"></input>
-      Password <Input type="password" name="password"></input>
-      Confirm Password <input type="password" name="confirm"</input>
-      <input type="submit" label="register"></input>
+      <div class="block">
+          <h4>Register</h4>
+          First Name <input type="text" name="fname"></input>
+          Last Name <input type="text" name="lname"></input>
+          Email <input type="text" name="email"></input><br>
+          Password <Input type="password" name="password"></input>
+          Confirm Password <input type="password" name="confirm"></input>
+          <input type="submit" label="register"></input><br>
+       </div>
     </form>
 
-    <form action="login" method="POST">
+    <form id="form" action="login" method="POST">
       {% csrf_token %}
-      Email <input type="gext" name="email"></input>
-      Password <input type="password" name="password"></input>
-      <input type="submit" label="login"></input>
+      <div class="block">
+          <h4>Login</h4>
+          Email <input type="gext" name="email"></input>
+          Password <input type="password" name="password"></input>
+          <input type="submit" label="login"></input>
+      </div>
     </form>
-
+    </div>
   </body>
 </html>

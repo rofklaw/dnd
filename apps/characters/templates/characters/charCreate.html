@@ -4,25 +4,38 @@
         <meta charset="utf-8">
         <title>Create Character</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#add").click(function(){
+                    $("#f1").hide();
+                })
+            })
+        </script>
         <style media="screen">
-            .{
-                margin:0px;
-                padding: 0px;
-            }
-            #wrapper{
+
+            body{
                 margin: 0px;
                 padding: 0px;
                 width: 1300px;
-                height: 700px;
-                background-image: url("../../static/images/characters/lqFniyN.jpg");
+                height: 1500px;
+                background: linear-gradient(transparent, #111, #111), url("../../static/images/characters/lqFniyN.jpg");
                 background-size: contain;
                 background-color: black;
                 background-repeat: no-repeat;
                 color: white;
             }
+            a{
+                color:white;
+            }
             #header{
                 height: 85px;
                 background-color:rgba(0, 0, 0, 0.5);
+            }
+            #f1{
+                display: inline-block;;
+            }
+            #f2{
+                display: inline-block;;
             }
             #form input{
                 display:block;
@@ -36,12 +49,17 @@
                 padding-right: 45px;
             }
             #heada{
+                text-shadow: 1px 1px 1px #977;
                 color:red;
             }
             .block{
-
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 15px;
                 display: inline-block;
                 margin-left: 30px;
+                margin-top: 15px;
+                border: 1px solid silver;
+                border-radius: 5px;
                 vertical-align: top;
             }
             .block button{
@@ -56,12 +74,12 @@
                     <h1>Dojo & Dragons</h1>
                 </div>
                 <div id="head">
-                    <a href="#">Home</a>
-                    <a href="#">Logout</a>
+                    <a href="{% url 'forum:index' %}">Home</a>
+                    <a href = "{% url 'forum:logout' %}">Logout</a>
                 </div>
             </div>
             <div id="form">
-                <form action="{% url 'characters:create' %}" method="post">
+                <form id="f1" action="{% url 'characters:create' %}" method="post">
                 {% csrf_token %}
                     <div class="block">
                         Character Name:<input type="text" name="name" value="">
@@ -71,10 +89,10 @@
                         Race: <input type="text" name="race" value="">
                         Background: <input type="text" name="background" value="">
                         Alignment: <input type="text" name="alignment" value="">
-                        <button name="button">Add Character</button>
+                        <button name="button">Save</button>
                     </div>
                 </form>
-                <form action="{% url 'characters:createAttb' %}" method="post">
+                <form id="f2" action="{% url 'characters:createAttb' %}" method="post">
                 {% csrf_token %}
                     <div class="block">
                         <label>Attributes</label>
@@ -84,7 +102,7 @@
                         Intelligence: <input type="text" name="INT" value="">
                         Wisdom: <input type="text" name="WIS" value="">
                         Charisma: <input type="text" name="CHA" value="">
-                        <button name="button">Add Attributes</button>
+                        <button name="button">Submit</button>
                     </div>
                 </form>
             </div>

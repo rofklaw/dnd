@@ -1,0 +1,30 @@
+body{
+    width: 1200px;
+    height: 400px;
+    background-image:url("../../images/logreg/LoginPage.jpg");
+    background-repeat: no-repeat;
+    background-color: black;
+    color: white;
+}
+#main{
+    width:675px;
+    height:600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+}
+#form{
+    margin-top: 40px;
+}
+.block input{
+    display: inline-block;
+    margin: 5px;
+}
+ form{
+
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+}

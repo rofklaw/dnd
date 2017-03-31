@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% load static %}
+{% load staticfiles %}
 <style media="screen">
+    body {
+      background-color: black;
+    }
+
     #wrapper{
         margin: 0px;
         padding: 0px;
@@ -37,6 +41,24 @@
     #attributes{
         margin: 10px;
     }
+
+    .treasure{
+      display: inline-block;
+      margin: 10px;
+      background-color: rgba(0,0,0, 0.5);
+      border-width: 2px;
+      border-color: black;
+      border-style: solid;
+      box-shadow: 5px 5px 3px #001;
+    }
+
+    .trasure img{
+      width: 200;
+      height: auto;
+    }
+
+
+    }
     .stats{
         display: inline-block;
         background-color: rgba(0, 0, 0, 0.5);
@@ -54,13 +76,19 @@
       <a href="{% url 'store:curate' %}"> Click me to add Merch! </a>
     {% endif %}
 
+
+
     {% for item in merch %}
-      <p> {{item.name}} </p>
-      <p> $ {{item.price}} </p>
-      <img src="{{item.picture.name}}">
-      <p> {{item.description}} </p>
-      <a href ="{% url 'store:add_to_cart' id=item.id %}">Add to Cart </a>
+      <div class="treasure"
+        <p> {{item.name}} </p>
+        <p> $ {{item.price}} </p>
+        <img src="/{{item.picture.name}}" alt="{{item.name}}">
+        <p> {{item.description}} </p>
+        <a href ="{% url 'store:add_to_cart' id=item.id %}">Add to Cart </a>
+      </div>
     {% endfor %}
+
+
 
     <a href="{% url 'forum:index' %}"> back to the forums </a>
   </div>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Forum</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<title>Forum</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'style/forum/home.css' %}"media="screen" title="no title"  charset="utf-8">
+	</head>
 	<body>
         <div id="header">
             <h2 id="logo">Dojo & Dragons</h2>
@@ -15,10 +15,9 @@
 		<div class = "menu">
 			<a href = "{% url 'store:index' %}">Store</a>
 			<a href = "{% url 'compendium:index' %}">Compendium</a>
-			<a href = "{% url 'characters:profile' %}">Characters</a>
+			<a href = "{% url 'characters:profile' %}">Profile/Characters</a>
 			<a href = "{% url 'forum:logout' %}">Logout</a>
 		</div>
-		<div id ="wrapper">
 			{% for post in posts %}
 				<div class = "elements">
 					<p>{{post.poster.first_name}} {{post.poster.last_name}} Posted On {{post.created_at}} : </p>
@@ -43,6 +42,5 @@
 			<p>Pages:</p>
 			{{pages|safe}}
 		</div>
-      </div>
 	</body>
 </html>

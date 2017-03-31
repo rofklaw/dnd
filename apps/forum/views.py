@@ -6,6 +6,10 @@ from ..logreg.models import User, Admin
 
 # Create your views here.
 def index(request):
+	try:
+		User.objects.get(id = request.session['id'])
+	except:
+		return redirect(reverse('login:home'))
 	message = ""
 	if not 'page' in request.session:
 		request.session['page'] = 1
@@ -48,7 +52,7 @@ def index(request):
 	except:
 		pass
 	return render(request, 'forum/index.html', context)
-    
+
 def add(request):
 	text = request.POST['text']
 	user = User.objects.get(id = request.session['id'])
@@ -59,19 +63,19 @@ def add(request):
 def next(request):
 	request.session['page'] += 1
 	return redirect(reverse('forum:index'))
-	
+
 def previous(request):
 	request.session['page'] -= 1
 	return redirect(reverse('forum:index'))
-	
+
 def nextcomment(request, id):
 	request.session['comment'] += 1
 	return redirect(reverse('forum:post', kwargs={'id': id}))
-	
+
 def previouscomment(request, id):
 	request.session['comment'] -= 1
 	return redirect(reverse('forum:post', kwargs={'id': id}))
-	
+
 def init(request, id):
 	request.session['comment'] = 1
 	return redirect(reverse('forum:post', kwargs={'id': id}))
@@ -166,7 +170,7 @@ def delete(request, id):
 	Post.objects.get(id = id).delete();
 	request.session['page'] = 1
 	return redirect(reverse('forum:index'))
-	
+
 def delcom(request, id, comment):
 	Comment.objects.get(id = comment).delete();
 	request.session['comment'] = 1

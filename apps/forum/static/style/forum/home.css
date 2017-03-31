@@ -18,8 +18,10 @@ body {
 	background-repeat: no-repeat;
 }
 #header{
+	width: 1200px;
 	background-color: rgba(0, 0, 0, 0.5);
 	color:white;
+
 }
 
 .elements{
@@ -41,7 +43,7 @@ body {
 .post{
 	display: inline-block;
 	color: white;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.5);
 	font-family: "Comic Sans MS";
 	margin: 5px;
 	padding: 5px;
@@ -55,4 +57,7 @@ body {
 	font-family: "Comic Sans MS";
 	color: white;
 	display: inline-block;
+}
+
+#wrapper{
 }
