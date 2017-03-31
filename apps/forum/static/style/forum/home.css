@@ -2,9 +2,20 @@
 	margin: 0px;
 	padding: 0px;
 }
+<<<<<<< HEAD
+#wrapper{
+	width: 1300px;
+	height: 700px;
+	background-image: url("images/characters/Tiamat.jpg");
+	background-size: contain;
+	background-color: black;
+	background-repeat: no-repeat;
+	color: white;
+=======
 
 body {
 	background-color: gray;
+>>>>>>> 750e508706ff24652942588bca32b171c5787094
 }
 
 .elements{
@@ -44,6 +55,8 @@ body {
 	border-radius: 5px;
 	display: inline-block;
 }
+<<<<<<< HEAD
+=======
 
 #wrapper{
 	margin: 0px;
@@ -55,3 +68,4 @@ body {
 	/*background-color: black;*/
 	background-repeat: no-repeat;
 }
+>>>>>>> 750e508706ff24652942588bca32b171c5787094

@@ -4,15 +4,18 @@
         <meta charset="utf-8">
         <title>tester</title>
         <style media="screen">
-            #wrapper{
+            body{
                 margin: 0px;
                 padding: 0px;
                 width: 1300px;
-                height:auto;
+                height: 900px;
                 background-image: url("../../static/images/compendium/Dungeons-and-dragons-online-drows.jpg");
                 background-size: contain;
                 background-color: black;
                 background-repeat: no-repeat;
+                color: white;
+            }
+            a{
                 color: white;
             }
             #header{
@@ -20,24 +23,35 @@
             }
             #searcher{
                 display:inline-block;
+                vertical-align: top;
                 width:200px;
-                height:700px;
+                height:400px;
+                border: 1px solid white;
+                background-color:rgba(100, 100, 100, 0.5);
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-left: 20px;
             }
             .search{
                 display:block;
             }
             #information{
                 display: inline-block;
+                margin: 20px;
+                padding: 20px;
                 width: 900px;
                 height: auto;
+                background-color:rgba(0, 0, 0, 0.7);
+                border: 1px solid white;
+                border-radius: 5px;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type='text/javascript'>
             $(document).ready(function(){
-                $('form').submit(function(e) {
+                $('#spells').submit(function(e) {
                     e.preventDefault();
-                    var my_class = $('#charClass').val();
+                    var my_class = $('#charClass1').val();
                     console.log(my_class);
                     var my_level = $('#charSpell').val();
                     console.log(my_level);
@@ -45,22 +59,6 @@
                         console.log(res);
                         var html_str = "";
                         html_str += "<h3>"+ res.name + "</h3>";
-                        html_str += "<h4>Hit Die: "+ res.hit_die +"</h4>";
-                        html_str += "<b>Armor & Weapon Proficiencies:</b><ul>";
-                            for(var i = 0; i < res.proficiencies.length; i++) {
-                                html_str += "<li>" + res.proficiencies[i].name + "</li>";
-                            }
-                        html_str += "</ul>";
-                        html_str += "<b>Proficiency Choices:</b><ul>";
-                            for(var i = 0; i < res.proficiency_choices[0].from.length; i++) {
-                                html_str += "<li>" + res.proficiency_choices[0].from[i].name + "</li>";
-                            }
-                        html_str += "</ul>";
-                        html_str += "<b>Saving Throws:</b><ul>";
-                            for(var i = 0; i < res.saving_throws.length; i++) {
-                                html_str += "<li>" + res.saving_throws[i].name + "</li>";
-                            }
-                        html_str += "</ul>";
                         html_str += "<b>Spells:</b><ul>";
                         for(var num = 1; num<306; num++){
                             $.get("http://www.dnd5eapi.co/api/spells/"+num, function(res){
@@ -84,6 +82,62 @@
                         }
                     }, "json");
                 })
+                $('#class').submit(function(e) {
+                    e.preventDefault();
+                    var my_class2 = $('#charClass2').val();
+                    console.log(my_class2);
+                    $.get("http://www.dnd5eapi.co/api/"+my_class2, function(res) {
+                        console.log(res);
+                        var html_str = "";
+                        html_str += "<h3>"+ res.name + "</h3>";
+                        html_str += "<h4>Hit Die: "+ res.hit_die +"</h4>";
+                        html_str += "<b>Armor & Weapon Proficiencies:</b><ul>";
+                            for(var i = 0; i < res.proficiencies.length; i++) {
+                                html_str += "<li>" + res.proficiencies[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Proficiency Choices:</b><ul>";
+                            for(var i = 0; i < res.proficiency_choices[0].from.length; i++) {
+                                html_str += "<li>" + res.proficiency_choices[0].from[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Saving Throws:</b><ul>";
+                            for(var i = 0; i < res.saving_throws.length; i++) {
+                                html_str += "<li>" + res.saving_throws[i].name + "</li>";
+                            }
+                        html_str += "</ul>";
+                        $("#information").html(html_str);
+                    }, "json");
+                })
+                $('#monster').submit(function(e) {
+                    e.preventDefault();
+                    var id = $('#monsterID').val();
+                    console.log(id);
+                    $.get("http://www.dnd5eapi.co/api/monsters/"+id, function(res) {
+                        console.log(res);
+                        var html_str = "";
+                        html_str += "<h3>"+ res.name + "</h3>";
+                        html_str += "<p>Size: "+ res.size +"</p>";
+                        html_str += "<p>Type: "+ res.type +"</p>";
+                        html_str += "<p>Alignment: "+ res.alignment +"</p>";
+                        html_str += "<p>Armor Class: "+ res.armor_class +"</p>";
+                        html_str += "<p>Hit Points: "+ res.hit_points +"</p>";
+                        html_str += "<p>Languages: "+ res.languages +"</p>";
+                        html_str += "<b>Special Abilities:</b><ul>";
+                            for(var i = 0; i < res.special_abilities.length; i++) {
+                                html_str += "<p>" + res.special_abilities[i].name + "</p>";
+                                html_str += "<ul><li>" + res.special_abilities[i].desc + "</li></ul>";
+                            }
+                        html_str += "</ul>";
+                        html_str += "<b>Actions:</b><ul>";
+                            for(var i = 0; i < res.actions.length; i++) {
+                                html_str += "<p>" + res.actions[i].name + "</p>";
+                                html_str += "<ul><li>" + res.actions[i].desc + "</li></ul>";
+                            }
+                        html_str += "</ul>";
+                        $("#information").html(html_str);
+                    }, "json");
+                })
             })
         </script>
     </head>
@@ -97,8 +151,8 @@
             <div id="searcher">
                 <h4>Spell Search:</h4>
                 <div class="search">
-                    <form>
-                        Class: <select id="charClass" name="charClass">
+                    <form id="spells">
+                        Class: <select id="charClass1" name="charClass">
                             <option value="classes/2">Bard</option>
                             <option value="classes/3">Cleric</option>
                             <option value="classes/4">Druid</option>
@@ -107,7 +161,7 @@
                             <option value="classes/10">Sorcerer</option>
                             <option value="classes/11">Warlock</option>
                             <option value="classes/12">Wizard</option>
-                        </select>
+                        </select><br>
                         Spell Level: <select id="charSpell" name="charSpells">
                             <option value=0>Cantrips</option>
                             <option value=1>Lvl.1</option>
@@ -120,14 +174,14 @@
                             <option value=8>Lvl.8</option>
                             <option value=9>Lvl.9</option>
                         </select>
-                        <input id="submit" type='submit' value='Search'>
+                        <input id="spells2" type='submit' value='Search Spell'>
                     </form>
                 </div>
                 <h4>Class Search:</h4>
                 <div class="search">
-                    <form>
+                    <form id="class">
                         <label for="">Class:</label>
-                        <select id="charClass" name="charClass">
+                        <select id="charClass2" name="charClass">
                             <option value="classes/1">Barbarian</option>
                             <option value="classes/2">Bard</option>
                             <option value="classes/3">Cleric</option>
@@ -141,17 +195,15 @@
                             <option value="classes/11">Warlock</option>
                             <option value="classes/12">Wizard</option>
                         </select>
-                        <input id="submit" type='submit' value='Search'>
+                        <input id="class2" type='submit' value='Search Class'>
                     </form>
                 </div>
                 <h4>Monster Search:</h4>
                 <div class="search">
-                    <form>
+                    <form id="monster">
                         <label for="">Monster:</label>
-                        <input type="text" name="monster" placeholder="Name of Monster">
-                        <input id="submit" type='submit' value='Search'>
-                        <p>or</p>
-                        <input id="submit" type='submit' value='Random Monster'>
+                        <input id="monsterID" type="text" name="monster" placeholder="ID of Monster">
+                        <input id="monster2" type='submit' value='Search'>
                     </form>
                 </div>
             </div>
