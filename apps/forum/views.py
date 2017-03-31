@@ -35,9 +35,11 @@ def index(request):
 	num = len(all) / 10
 	##print num
 	if num > 1:
+		pages += "<div class = 'pages'><p>Pages:</p>"
 		for i in range(1, num + 2):
 			if not i == request.session['page']:
 				pages += "<a href = '{}'>{}</a> ".format(reverse("forum:page", kwargs={'id': i}), i)
+		pages += "</div>"
 	context = {
 		"posts": posts,
 		"message": message,
@@ -142,9 +144,11 @@ def post(request, id):
 	num = len(all) / 10
 	##print num
 	if num > 1:
+		pages += "<div class = 'pages'><p>Pages:</p>"
 		for i in range(1, num + 2):
-			if not i == request.session['comment']:
-				pages += "<a href = '{}'>{}</a> ".format(reverse("forum:commentpage", kwargs={'id': id, "page": i}), i)
+			if not i == request.session['page']:
+				pages += "<a href = '{}'>{}</a> ".format(reverse("forum:page", kwargs={'id': i}), i)
+		pages += "</div>"
 	context["pages"] = pages
 	try:
 		user = User.objects.get(id = request.session['id'])

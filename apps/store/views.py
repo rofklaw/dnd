@@ -40,7 +40,8 @@ def curate(request):
     }
     return render(request, 'store/curate.html', context)
 
-def create_merch(request):
+
+def create_merch(request): 
     try:
         admincheck = Admin.objects.get(users__id = request.session['id'])
     except:

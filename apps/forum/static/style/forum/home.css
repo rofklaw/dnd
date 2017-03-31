@@ -3,25 +3,23 @@
 	padding: 0px;
 }
 
-a{
-	color:white;
-}
-
 body {
-	margin: 0px;
-	padding: 0px;
-	width: 1200px;
-	height: 1620px;
-	background: linear-gradient(transparent, #111, #111), url("../../images/forum/tiamat.jpg");
-	background-size: contain;
-	background-color: #111;
-	background-repeat: no-repeat;
+	background: url("../../images/tiamat.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: black;
+	color: white;
 }
 #header{
 	width: 1200px;
 	background-color: rgba(0, 0, 0, 0.5);
 	color:white;
 
+a{
+	color: white;
+	/*background-color: gray;*/
 }
 
 .elements{
@@ -34,6 +32,7 @@ body {
 	padding: 5px;
 	border: 2px solid black;
 	border-radius: 5px;
+	vertical-align: top;
 }
 
 .elements > a{
@@ -57,7 +56,4 @@ body {
 	font-family: "Comic Sans MS";
 	color: white;
 	display: inline-block;
-}
-
-#wrapper{
 }
