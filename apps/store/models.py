@@ -16,7 +16,7 @@ class CartManager(models.Manager):
 class Product(models.Model):
     name = models.CharField(max_length = 255)
     description = models.CharField(max_length = 255)
-    picture = models.ImageField(upload_to = 'products')
+    picture = models.ImageField(upload_to="products")
     price = models.DecimalField(decimal_places = 2, max_digits = 6)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)

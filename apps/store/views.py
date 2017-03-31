@@ -40,8 +40,11 @@ def curate(request):
     }
     return render(request, 'store/curate.html', context)
 
+def delete(request, id):
+    item = Product.objects.get(id=id).delete()
+    return redirect(reverse('store:index'))
 
-def create_merch(request): 
+def create_merch(request):
     try:
         admincheck = Admin.objects.get(users__id = request.session['id'])
     except:
@@ -72,19 +75,15 @@ def remove_from_cart(request, id):
 
 def show_cart(request):
     cart = Product.objects.filter(cart__id = request.session['cart_id'])
-    print Cart.products.filter(user__id = request.session['id'])
     total = Cart.objects.total(request.session['cart_id'])
     stripe_total = total * 100
     counter = 0
     for product in cart:
-        print product.name
         counter += 1
-    print counter
     cart_info = {
         'cart': cart,
         'total': total,
         'stripe_total': stripe_total
-
     }
     return render(request, 'store/show_cart.html', cart_info)
 

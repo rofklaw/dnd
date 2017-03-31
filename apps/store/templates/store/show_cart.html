@@ -4,8 +4,56 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <style media="screen">
+      body{
+          background-image: url("../../static/images/store/Mji0eJV.jpg");
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+          background-color: black;
+          color: white;
+      }
+      a{
+          color: white;
+          padding-left: 5px;
+          padding-right: 5px;
+      }
+      #header{
+          margin-top: -8px;
+          margin-left: -8px;
+          margin-right: -7px;
+          background:linear-gradient(#555, #000, #555);
+          border-bottom: 1px solid black;
+      }
+      #header h1{
+          margin: 0px;
+          margin-left: 15px;
+          font-style: italic;
+          color: rgba(255, 100, 100, 0.75);
+      }
+      #links{
+          text-align: right;
+      }
+      #form{
+          display: inline-block;
+          margin:50px;
+          padding: 10px;
+          border: 1px solid silver;
+          border-radius: 5px;
+          background-color:rgba(0, 0, 0, 0.5);
+      }
+  </style>
   <body>
-      {% for product in cart %}
+      <div id="header">
+          <h1>Dojo & Dragons</h1>
+          <div id="links">
+              <a href="{% url 'forum:index' %}">Home</a>
+              <a href = "{% url 'forum:logout' %}">Logout</a>
+          </div>
+      </div>
+      <div id="form">
+     {% for product in cart %}
      <p> {{product.name}} </p>
      <p> {{product.price}} </p>
      <a href="{% url 'store:remove_from_cart' id=product.id %}", method="POST">Remove from Cart</a>
@@ -30,9 +78,9 @@
 
   </script>
 
-  <a href="{% url 'store:index' %}"> Back to the Store </a>
+  <a href="{% url 'store:index' %}"> Back to Store </a>
 </form>
-
+</div>
 
   </body>
 </html>

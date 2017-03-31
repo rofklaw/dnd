@@ -81,9 +81,12 @@
       <div class="treasure"
         <p> {{item.name}} </p>
         <p> $ {{item.price}} </p>
-        <img src="/{{item.picture.name}}" alt="{{item.name}}">
+        <img src="/products/{{item.picture.name}}" alt="{{item.name}}">
         <p> {{item.description}} </p>
         <a href ="{% url 'store:add_to_cart' id=item.id %}">Add to Cart </a>
+        {% if privilege == 1 %}
+            <a href="{% url 'store:delete' id=item.id %}"> Delete </a>
+        {% endif %}
       </div>
     {% endfor %}
   </body>
