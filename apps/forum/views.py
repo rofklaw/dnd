@@ -7,9 +7,9 @@ from ..logreg.models import User, Admin
 # Create your views here.
 def index(request):
 	try:
-        User.objects.get(id = request.session['id'])
-    except:
-        return redirect(reverse('login:home'))
+		User.objects.get(id = request.session['id'])
+	except:
+		return redirect(reverse('login:home'))
 	message = ""
 	if not 'page' in request.session:
 		request.session['page'] = 1
