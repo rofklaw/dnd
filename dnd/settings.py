@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_z*d&$3_$)u_s)+h5zxayz)nvvr_=l)3$d89$+3=w*_7vh5x1^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.53.179.234']
 
 # STATIC_URL = '/products/'
 
