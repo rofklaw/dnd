@@ -14,7 +14,7 @@ def register(request):
         return redirect(reverse('login:home'))
     prehash = User.objects.bcryptor(request.POST['password'])
     pwhash = prehash['pwhash']
-    ##User.objects.create(first_name = request.POST['fname'], last_name = request.POST['lname'], email = request.POST['email'], pwhash = pwhash)
+    User.objects.create(first_name = request.POST['fname'], last_name = request.POST['lname'], email = request.POST['email'], pwhash = pwhash)
     ##request.session['first_name'] = request.POST['fname']
     ##namer = User.objects.get(email = request.POST['email'])
     ##if namer.id == 1:
