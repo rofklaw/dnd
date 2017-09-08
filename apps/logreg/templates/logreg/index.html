@@ -16,7 +16,7 @@
       </ul>
     {% endif %}
     <div id="main">
-    <form action="register/" method="POST">
+    <form action="{% url 'login:register' %}" method="POST">
       {% csrf_token %}
       <div class="block">
           <h4>Register</h4>
@@ -29,7 +29,7 @@
        </div>
     </form>
 
-    <form id="form" action="login/" method="POST">
+    <form id="form" action="{% url 'login:login' %}" method="POST">
       {% csrf_token %}
       <div class="block">
           <h4>Login</h4>
